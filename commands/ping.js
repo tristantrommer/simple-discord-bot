@@ -1,11 +1,9 @@
 const { SlashCommandBuilder } = require('@discordjs/builders');
 
-const {MessageEmbed} = require("discord.js");
-
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('ping')
-        .setDescription('Replies with Pong!'),
+        .setDescription('Returns the latency.'),
     async execute(interaction) {
         const pingingEmbed = {
             color: 0x0066ff,
