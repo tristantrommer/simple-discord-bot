@@ -1,0 +1,8 @@
+{
+    "colors": {
+        "default": "007bff",
+        "success": "28a745",
+        "warning": "ffc107",
+        "error": "dc3545"
+    }
+}
