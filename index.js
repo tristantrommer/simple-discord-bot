@@ -4,6 +4,10 @@ const fs = require('fs');
 require('dotenv').config();
 
 const client = new Client({
+    presence: {
+        status: 'online',
+        activities: [{ name: '/help', type: 'LISTENING'}]
+    },
     intents: [
         Intents.FLAGS.GUILDS,
         Intents.FLAGS.GUILD_MESSAGES,

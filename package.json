@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node .",
     "start-dev": "nodemon .",
-    "deploy-commands": "node deploy-commands.js",
+    "register-commands": "node register-commands.js --global",
+    "register-commands-dev": "node register-commands.js --guild",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
