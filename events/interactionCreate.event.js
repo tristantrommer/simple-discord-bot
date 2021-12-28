@@ -1,5 +1,3 @@
-const { colors } = require('./../config.json');
-
 module.exports = {
     name: 'interactionCreate',
     async execute(interaction) {
@@ -14,9 +12,9 @@ module.exports = {
                 console.error(error);
 
                 const errorEmbed = {
-                    color: `0x${colors.error}`,
+                    color: 0xdc3545,
                     title: 'Error',
-                    description: 'There was an error while executing this command!'
+                    description: 'There was an error while executing this command.'
                 }
 
                 if (interaction.deferred || interaction.replied) {
@@ -26,7 +24,5 @@ module.exports = {
                 }
             }
         }
-
-        return;
     },
 };

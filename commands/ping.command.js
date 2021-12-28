@@ -1,21 +1,19 @@
 const { SlashCommandBuilder, inlineCode } = require('@discordjs/builders');
 
-const { colors } = require('./../config.json');
-
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('ping')
         .setDescription('Returns the latency.'),
     async execute(interaction) {
         const pingingEmbed = {
-            color: `0x${colors.default}`,
+            color: 0x007bff,
             title: 'Pinging...',
         }
 
         const sent = await interaction.reply({ embeds: [pingingEmbed], fetchReply: true });
 
         const finalEmbed = {
-            color: `0x${colors.default}`,
+            color: 0x007bff,
             title: 'Pong!',
             fields: [
                 {
@@ -32,6 +30,6 @@ module.exports = {
             timestamp: new Date(),
         }
 
-        await interaction.editReply({ embeds: [finalEmbed] });
+        return interaction.editReply({ embeds: [finalEmbed] });
     }
 };
