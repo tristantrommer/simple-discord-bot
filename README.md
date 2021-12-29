@@ -2,12 +2,17 @@
 
 A simple Discord bot with some useful features.
 
+
+## Requirements
+
+- [Node.js](https://nodejs.org/en/) and [npm](https://www.npmjs.com/)
+- [pm2](https://pm2.keymetrics.io/) to run the application in a production environment
+- [nodemon](https://nodemon.io/) to run the application in a development environment
+
 ## Setup
 
-Make sure that Node.js is installed on your system.
-
-1. Run `npm install` to download the dependencies.
-2. Create and adjust the `.env` file in the root directory. You can find more information in the next section.
+1. Create and configure the `.env` file in the root directory.
+2. Run `npm install` to download the dependencies.
 3. Register commands:
     - `npm run register-commands` to register global commands
     - `npm run register-commands-dev` to register guild commands
