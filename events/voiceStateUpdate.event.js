@@ -7,7 +7,7 @@ module.exports = {
     name: 'voiceStateUpdate',
     async execute(oldState, newState) {
         if (!oldState.selfMute && newState.selfMute) {
-            const notify_list = await mute_alert.findAll({ where: { notify_user_id: newState.id }, attributes: ['user_id'] });
+            const notify_list = await mute_alert.findAll({ where: { guild_id: newState.guild.id, notify_user_id: newState.id }, attributes: ['user_id'] });
 
             if (notify_list.length === 0) return;
 

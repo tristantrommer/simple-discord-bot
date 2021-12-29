@@ -26,19 +26,38 @@ module.exports = {
         if (interaction.options.data.some(option => option.type === 'SUB_COMMAND')) {
             const subcommand = interaction.options.getSubcommand();
 
+            const guild_id = interaction.guildId;
             const user_id = interaction.user.id;
             const notify_user_id = (subcommand === 'add' || subcommand === 'remove') ? interaction.options.getMember('user').id : '';
 
             let returnEmbed = {};
 
             if (subcommand === 'list') {
-                return interaction.reply("mute-alert list");
+                const notify_list = await mute_alert.findAll({ where: { guild_id: guild_id, user_id: user_id }, attributes: ['notify_user_id'] });
+
+                returnEmbed = {
+                    color: 0x007bff,
+                    title: 'Notification list',
+                    description: 'There are no users on your notification list yet.'
+                };
+
+                if (notify_list.length > 0) {
+                    returnEmbed.description = '';
+
+                    const notify_user_ids = Array.from(notify_list.map(u => u.notify_user_id));
+
+                    for (const id of notify_user_ids) {
+                        returnEmbed.description += `${userMention(id)}\n`;
+                    }
+                }
+
             } else if (subcommand === 'add') {
                 try {
                     if (user_id === notify_user_id) throw new Error('AddSelfError');
                     if (notify_user_id === process.env.CLIENT_ID) throw new Error('AddBotError');
 
                     await mute_alert.create({
+                        guild_id: guild_id,
                         user_id: user_id,
                         notify_user_id: notify_user_id
                     });
@@ -68,6 +87,7 @@ module.exports = {
                 }
             } else if (subcommand === 'remove') {
                 const rowCount = await mute_alert.destroy({where: {
+                    guild_id: guild_id,
                     user_id: user_id,
                     notify_user_id: notify_user_id
                 }});
