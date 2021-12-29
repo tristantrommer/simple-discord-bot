@@ -2,6 +2,17 @@
 
 A simple Discord bot with some useful features.
 
+## Commands
+
+**mute-alert**: Notifies you when a certain user mutes himself.
+- `/mute-alert list` - Shows the users on your notification list.
+- `/mute-alert add` - Add a user to the notification list.
+- `/mute-alert remove` - Removes a user from the notification list.
+
+**info**:
+- `/help` - Displays an overview of the commands and functions.
+- `/ping` - Displays the latency of the bot.
+- `/invite` - Invite this bot to your server.
 
 ## Requirements
 
