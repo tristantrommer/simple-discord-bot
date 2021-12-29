@@ -54,7 +54,7 @@ module.exports = {
             } else if (subcommand === 'add') {
                 try {
                     if (user_id === notify_user_id) throw new Error('AddSelfError');
-                    if (notify_user_id === process.env.CLIENT_ID) throw new Error('AddBotError');
+                    if (notify_user_id === process.env.DISCORD_CLIENT_ID) throw new Error('AddBotError');
 
                     await mute_alert.create({
                         guild_id: guild_id,
