@@ -5,11 +5,13 @@ const fs = require('fs');
 require('dotenv').config();
 
 const commands = [];
-const commandFiles = fs.readdirSync('./').filter(file => file.endsWith('.command.js'));
+const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.command.js'));
 for (const file of commandFiles) {
     const command = require(`./${file}`);
     commands.push(command.data.toJSON());
 }
+
+console.log(commands);
 
 const rest = new REST({ version: '9' }).setToken(process.env.DISCORD_TOKEN);
 
