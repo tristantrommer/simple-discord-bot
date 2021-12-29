@@ -3,7 +3,7 @@ const { SlashCommandBuilder, inlineCode } = require('@discordjs/builders');
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('ping')
-        .setDescription('Returns the latency.'),
+        .setDescription('Displays the latency of the bot.'),
     async execute(interaction) {
         const pingingEmbed = {
             color: 0x007bff,

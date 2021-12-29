@@ -1,4 +1,4 @@
-const { userMention } = require('@discordjs/builders');
+const { userMention, channelMention } = require('@discordjs/builders');
 
 const db = require("../model");
 const mute_alert = db.mute_alert;
@@ -18,11 +18,11 @@ module.exports = {
                     const messageEmbed = {
                         color: 0x007bff,
                         title: 'Mute alert',
-                        description: `${userMention(newState.id)} has just muted.`,
+                        description: `${userMention(newState.id)} has just muted in ${channelMention(newState.channelId)}.`,
                         timestamp: new Date(),
                     };
 
-                    if (newState.selfDeaf) messageEmbed.description = `${userMention(newState.id)} has just muted fully.`;
+                    if (newState.selfDeaf) messageEmbed.description = `${userMention(newState.id)} has just muted fully in ${channelMention(newState.channelId)}.`;
 
                     return newState.channel.members.get(id).user.send({ embeds: [messageEmbed] });
                 }
